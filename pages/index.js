@@ -9,7 +9,8 @@ export default function Home() {
   const [ todoList, setTodoList ] = useState(["value"])
   const [currentTodoValue, setCurrentTodoValue] = useState("")
   const [currentTodoIndex, setCurrentTodoIndex] = useState(null)
-  console.log({count});
+  
+
   function onChangeTodoInput(e) {
     setCurrentTodoValue(e.target.value)
   }
@@ -18,8 +19,6 @@ export default function Home() {
     setTodoList(prev => [...prev, currentTodoValue])
     setCurrentTodoValue("")
   }
-
-
 
   return (
     <div className={styles.container}>
@@ -38,8 +37,8 @@ export default function Home() {
             todoList.map((todo, index) => (
               <div key={index} style={{display: "flex"}}>
                 <input value={todo} disabled={currentTodoIndex !== index} onChange={(e) => {setTodoList(todoList.map((todo, i) => i === index ? e.target.value : todo  ))}}/>
-                <button onClick={() =>setTodoList(prev => prev.filter((_, i) => i !== index))}>Delete</button>
-                <button  onClick={()=>{console.log("test"); setCurrentTodoIndex(index)}}>Edit</button>
+                <button onClick={() => setTodoList(prev => prev.filter((_, i) => i !== index))}>Delete</button>
+                <button  onClick={()=>setCurrentTodoIndex(index)}>Edit</button>
               </div>
               
             ))
