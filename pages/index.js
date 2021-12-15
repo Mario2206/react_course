@@ -20,6 +20,13 @@ export default function Home() {
     setCurrentTodoValue("")
   }
 
+  function editTodo(e) {
+    setTodoList(prevTodoList => {
+      prevTodoList[currentTodoIndex] = e.target.value ;
+      return [...prevTodoList];
+    })
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -39,7 +46,7 @@ export default function Home() {
                 <input 
                 value={todo} 
                 disabled={currentTodoIndex !== index} 
-                onChange={(e) => setTodoList(prevTodoList => prevTodoList.map((todo, i) => i === index ? e.target.value : todo  ))}
+                onChange={editTodo}
                 />
                 <button 
                 onClick={() => setTodoList(prev => prev.filter((_, i) => i !== index))}
