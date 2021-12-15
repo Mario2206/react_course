@@ -36,11 +36,18 @@ export default function Home() {
           todoList.length > 0 && (
             todoList.map((todo, index) => (
               <div key={index} style={{display: "flex"}}>
-                <input value={todo} disabled={currentTodoIndex !== index} onChange={(e) => {setTodoList(todoList.map((todo, i) => i === index ? e.target.value : todo  ))}}/>
-                <button onClick={() => setTodoList(prev => prev.filter((_, i) => i !== index))}>Delete</button>
-                <button  onClick={()=>setCurrentTodoIndex(index)}>Edit</button>
+                <input 
+                value={todo} 
+                disabled={currentTodoIndex !== index} 
+                onChange={(e) => setTodoList(prevTodoList => prevTodoList.map((todo, i) => i === index ? e.target.value : todo  ))}
+                />
+                <button 
+                onClick={() => setTodoList(prev => prev.filter((_, i) => i !== index))}
+                >Delete</button>
+                <button  
+                onClick={()=>setCurrentTodoIndex(index)}
+                >Edit</button>
               </div>
-              
             ))
           )
         }
