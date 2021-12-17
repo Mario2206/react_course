@@ -5,7 +5,6 @@ import { useState } from "react"
 
 export default function Home() {
 
-  const [count, setCount] = useState(0)
   const [ todoList, setTodoList ] = useState(["value"])
   const [currentTodoValue, setCurrentTodoValue] = useState("")
   const [currentTodoIndex, setCurrentTodoIndex] = useState(null)
